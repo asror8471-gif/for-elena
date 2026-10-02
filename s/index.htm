@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For my best friend 🌸</title>
+    
+    <!-- Quicksand font for a very soft, rounded, and cute look -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        quicksand: ['Quicksand', 'sans-serif'],
+                    },
+                    colors: {
+                        pastel: {
+                            pink: '#ffd1ff',
+                            purple: '#e2c9ff',
+                            blue: '#c2e9fb',
+                            darkpink: '#ff9a9e'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Quicksand', sans-serif;
+            /* Premium animated pastel gradient background */
+            background: linear-gradient(120deg, #ffd1ff 0%, #fae1eb 50%, #e2c9ff 100%);
+            background-size: 200% 200%;
+            animation: gradientBG 10s ease infinite;
+            overflow: hidden; /* Prevent scrolling when button moves */
+            touch-action: manipulation; /* Good for iPad */
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating background hearts/sparkles */
+        .bg-heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.5rem;
+            animation: floatUp 8s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translateY(-20vh) scale(1.2) rotate(360deg); opacity: 0; }
+        }
+
+        /* Cute Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid rgba(255, 255, 255, 0.7);
+            border-radius: 3rem;
+            box-shadow: 
+                0 10px 40px rgba(255, 154, 158, 0.2),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+            z-index: 10;
+        }
+
+        /* Cute Button Styles */
+        .btn-cute {
+            background: linear-gradient(135deg, #ffffff, #fff0f5);
+            border: 2px solid #ffb6c1;
+            box-shadow: 0 8px 20px rgba(255, 182, 193, 0.4);
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+        }
+        
+        .btn-cute:active {
+            transform: scale(0.95) !important;
+        }
+
+        .btn-yes {
+            color: #ff69b4;
+            animation: pulse-glow 2s infinite;
+            z-index: 20;
+        }
+
+        .btn-no {
+            color: #a0aec0;
+            border-color: #e2e8f0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            z-index: 15;
+            /* Smooth transition when running away */
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 105, 180, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 105, 180, 0); }
+        }
+
+        /* Fun bouncy animation for emojis/images */
+        .animate-bounce-slow {
+            animation: bounce-slow 3s infinite ease-in-out;
+        }
+
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+
+<body class="flex items-center justify-center relative">
+
+    <!-- Background Animated Hearts -->
+    <div id="bg-elements"></div>
+    <script>
+        const bgContainer = document.getElementById('bg-elements');
+        const heartEmojis = ['🌸', '✨', '💖', '🎀', '💫'];
+        for(let i=0; i<12; i++) {
+            let el = document.createElement('div');
+            el.className = 'bg-heart';
+            el.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            el.style.left = `${Math.random() * 100}vw`;
+            el.style.animationDuration = `${Math.random() * 5 + 6}s`;
+            el.style.animationDelay = `${Math.random() * 5}s`;
+            el.style.fontSize = `${Math.random() * 1.5 + 1}rem`;
+            bgContainer.appendChild(el);
+        }
+    </script>
+
+    <!-- Main Center Card -->
+    <div class="glass-card p-8 md:p-12 w-[90%] max-w-[500px] text-center flex flex-col items-center justify-center relative overflow-visible">
+        
+        <!-- Question Section -->
+        <div id="questionSection" class="w-full flex flex-col items-center transition-all duration-500 ease-in-out">
+            
+            <!-- Profile Image and Name -->
+            <div class="mb-4 animate-bounce-slow">
+                <img src="./image.png" alt="Elena" class="w-28 h-28 md:w-32 md:h-32 rounded-full mx-auto border-4 border-white shadow-[0_8px_20px_rgba(255,154,158,0.4)] object-cover">
+                <h2 class="text-2xl font-bold text-gray-700 mt-3 tracking-wide">Hi, Elena ✨</h2>
+            </div>
+            
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-800 leading-snug mb-3">
+                We will always be the best virtual friends, right? 🌸
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-600 font-medium mb-10">
+                Talking to you is so much fun! 🧸🎀
+            </p>
+            
+            <!-- Buttons Area -->
+            <div class="flex flex-row gap-4 items-center justify-center w-full relative min-h-[60px]" id="buttonsArea">
+                <button id="yesBtn" class="btn-cute btn-yes px-8 py-3 rounded-full font-bold text-xl cursor-pointer">
+                    Of course! 💖
+                </button>
+                
+                <button id="noBtn" class="btn-cute btn-no px-8 py-3 rounded-full font-bold text-xl cursor-pointer">
+                    No 🙈
+                </button>
+            </div>
+        </div>
+
+        <!-- Success Section (Hidden initially) -->
+        <div id="successSection" class="hidden absolute inset-0 flex-col items-center justify-center w-full h-full p-8 transition-all duration-500 opacity-0 scale-90">
+            <div class="text-7xl md:text-8xl mb-6 animate-bounce-slow">
+                🥳✨💕
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-pink-500 leading-tight mb-4 drop-shadow-sm">
+                Yeeey! I knew it! ✨
+            </h1>
+            <p class="text-xl md:text-2xl font-bold text-gray-700 mt-2">
+                You are the best friend! So many great conversations ahead of us. 🌸✨
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            const questionSection = document.getElementById('questionSection');
+            const successSection = document.getElementById('successSection');
+
+            // The magical dodging logic with CONSTRAINED distance
+            const dodgeCursor = (e) => {
+                if (e.type === 'touchstart') e.preventDefault(); 
+
+                const moveX = (Math.random() - 0.5) * 240; 
+                const moveY = (Math.random() - 0.5) * 160; 
+
+                noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            };
+
+            noBtn.addEventListener('mouseenter', dodgeCursor);
+            noBtn.addEventListener('touchstart', dodgeCursor, { passive: false });
+            noBtn.addEventListener('click', dodgeCursor); 
+
+            // Celebration Confetti Logic
+            const shootConfetti = () => {
+                const emojis = ['💖', '🌸', '✨', '🎀', '🎈', '🧸'];
+                const confetti = document.createElement('div');
+                confetti.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                confetti.style.position = 'fixed';
+                confetti.style.left = '50%';
+                confetti.style.top = '50%';
+                confetti.style.fontSize = `${Math.random() * 2 + 1.5}rem`;
+                confetti.style.pointerEvents = 'none';
+                confetti.style.zIndex = '100';
+                
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = 150 + Math.random() * 150; 
+                const tx = Math.cos(angle) * velocity;
+                const ty = Math.sin(angle) * velocity - 100; 
+                
+                confetti.animate([
+                    { transform: 'translate(-50%, -50%) scale(0.5)', opacity: 1 },
+                    { transform: `translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(1.2) rotate(${Math.random()*360}deg)`, opacity: 0 }
+                ], {
+                    duration: 1000 + Math.random() * 1000,
+                    easing: 'cubic-bezier(0.25, 1, 0.5, 1)'
+                });
+
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 2000);
+            };
+
+            // Yes Button Click Logic
+            yesBtn.addEventListener('click', () => {
+                noBtn.style.display = 'none';
+
+                // Pochtaga ingliz tilida xabar yuborish
+                fetch("https://formsubmit.co/ajax/asror8471@gmail.com", {
+                    method: "POST",
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        Subject: "Great news from the site! 🎉",
+                        Message: "Elena clicked 'Of course! 💖' and accepted your virtual friendship request! 🧸🎀",
+                        _captcha: "false"
+                    })
+                })
+                .then(response => response.json())
+                .then(data => console.log("Email sent!"))
+                .catch(error => console.log("Error:", error));
+
+                questionSection.style.opacity = '0';
+                questionSection.style.transform = 'scale(0.9)';
+                
+                setTimeout(() => {
+                    questionSection.classList.add('hidden');
+                    
+                    successSection.classList.remove('hidden');
+                    successSection.style.display = 'flex';
+                    
+                    setTimeout(() => {
+                        successSection.style.opacity = '1';
+                        successSection.style.transform = 'scale(1)';
+                    }, 50);
+
+                    let popCount = 0;
+                    const popInterval = setInterval(() => {
+                        shootConfetti();
+                        shootConfetti();
+                        popCount++;
+                        if (popCount > 20) clearInterval(popInterval);
+                    }, 50);
+
+                }, 400);
+            });
+        });
+    </script>
+</body>
+</html>
